@@ -34,7 +34,7 @@ Resources:
 Outputs:
   SpringPetStoreApi:
     Description: URL for application
-    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/pets'
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/index'
     Export:
       Name: SpringPetStoreApi
       

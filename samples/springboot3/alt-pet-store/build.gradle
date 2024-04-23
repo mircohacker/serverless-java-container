@@ -5,6 +5,7 @@ repositories {
   mavenCentral()
   maven {url "https://repo.spring.io/milestone"}
   maven {url "https://repo.spring.io/snapshot"}
+  maven {url "https://repo.spring.io/libs-snapshot-local"}
 }
 
 dependencies {
@@ -12,8 +13,10 @@ dependencies {
           implementation('org.springframework.boot:spring-boot-starter-web:3.2.5') {
             exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
           },
-          'com.amazonaws.serverless:aws-serverless-java-container-springboot3:[2.0-SNAPSHOT,)',
+          'com.amazonaws.serverless:aws-serverless-java-container-springboot3:2.1.0-SNAPSHOT',
   )
+
+  implementation("org.springframework.boot:spring-boot-starter-freemarker:3.2.5")
 }
 
 task buildZip(type: Zip) {
