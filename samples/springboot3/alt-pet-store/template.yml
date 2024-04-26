@@ -30,12 +30,15 @@ Resources:
           Properties:
             TimeoutInMillis: 20000
             PayloadFormatVersion: '1.0'
-
+      FunctionUrlConfig:
+        AuthType: NONE
 Outputs:
+  MyFunctionUrlEndpoint:
+    Description: "Function URL for application"
+    Value:
+      Fn::GetAtt: PetStoreFunctionUrl.FunctionUrl
   SpringPetStoreApi:
     Description: URL for application
     Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/index'
-    Export:
-      Name: SpringPetStoreApi
       
 

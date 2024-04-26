@@ -2,9 +2,11 @@ package com.amazonaws.serverless.sample.springboot3;
 
 
 import com.amazonaws.serverless.exceptions.ContainerInitializationException;
+import com.amazonaws.serverless.proxy.internal.servlet.AwsHttpApiV2ProxyHttpServletRequest;
 import com.amazonaws.serverless.proxy.internal.testutils.Timer;
 import com.amazonaws.serverless.proxy.model.AwsProxyRequest;
 import com.amazonaws.serverless.proxy.model.AwsProxyResponse;
+import com.amazonaws.serverless.proxy.model.HttpApiV2ProxyRequest;
 import com.amazonaws.serverless.proxy.spring.SpringBootLambdaContainerHandler;
 import com.amazonaws.serverless.sample.springboot3.filter.CognitoIdentityFilter;
 import com.amazonaws.services.lambda.runtime.Context;
@@ -20,10 +22,10 @@ import java.util.EnumSet;
 
 
 public class StreamLambdaHandler implements RequestStreamHandler {
-    private static SpringBootLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
+    private static SpringBootLambdaContainerHandler<HttpApiV2ProxyRequest, AwsProxyResponse> handler;
     static {
         try {
-            handler = SpringBootLambdaContainerHandler.getAwsProxyHandler(Application.class);
+            handler = SpringBootLambdaContainerHandler.getHttpApiV2ProxyHandler(Application.class);
 
             // we use the onStartup method of the handler to register our custom filter
             handler.onStartup(servletContext -> {
